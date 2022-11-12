@@ -27,36 +27,49 @@
 #include <cstdlib>
 #include <time.h>
 
-void bubbleSort (int (&array)[], int length);
+void bubbleSort (int (&array)[], int length, int sortDirection);
 void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
 
 using namespace std;
 
 int main () {
-	//int array[5] = {5, 1, 10, 2, 0};
+	
+	int sortDirection;
+	cout<<"What type of sort do you want to do? (Type '1' to sort from min-to-max or '2' to sort from max-to-min): ";
+	cin>>sortDirection;
+
 	int array[5];
 	randomArray(array, 5);
 	cout<<"Original Array: ";
 	printArray(array,5);
-	bubbleSort(array, 5);
+	bubbleSort(array, 5, sortDirection);
 	cout<<"Bubble-Sorted Array: ";
 	printArray(array,5);
 }
 
-void bubbleSort( int (&array)[], int length ) {
+void bubbleSort( int (&array)[], int length, int sortDirection) {
 	int maxPermutation = length - 1;
 	int aux;
 	bool continueLoop;
-	
+
 	do {
 		continueLoop = false;
 		for ( int i = 0 ; i < maxPermutation ; i++ ) {
-			if (array[i] > array[i+1]) {
-				aux = array[i+1];
-				array[i+1] = array[i];
-				array[i] = aux;
-				continueLoop = true;
+			if(sortDirection == 1){
+				if (array[i] > array[i+1]) {
+					aux = array[i+1];
+					array[i+1] = array[i];
+					array[i] = aux;
+					continueLoop = true;
+				}
+			} else if (sortDirection == 2) {
+				if (array[i] < array[i+1]) {
+					aux = array[i+1];
+					array[i+1] = array[i];
+					array[i] = aux;
+					continueLoop = true;
+				}
 			}
 		}
 	} while (continueLoop);
