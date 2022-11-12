@@ -25,31 +25,24 @@
 #include <iostream>
 #include <fstream>
 
-void bubbleSort( int (&array)[5], int length );
-
+void bubbleSort( int (&array)[], int length );
+void printArray (int array[], int length );
 using namespace std;
 
 int main () {
-	cout<<"Hello There!";
 	int array[5] = {5, 1, 10, 2, 0};
-	cout<<"Original Array: [ 5, 1, 10, 2, 0 ]"<<endl;
+	cout<<"Original Array: ";
+	printArray(array,5);
 	bubbleSort(array, 5);
-	int length  = 5;
-	for (int i = 0 ; i < length ; i++) {
-		if(i == 0){
-			cout<<"Bubble-sorted Array: [ "<<array[i]<<", ";
-		} else if (i == length - 1) {
-			cout<<array[i]<<" ]"<<endl;
-		} else {
-			cout<<array[i]<<", ";
-		}
-	}
+	cout<<"Bubble-Sorted Array: ";
+	printArray(array,5);
 }
 
-void bubbleSort( int (&array)[5], int length ) {
+void bubbleSort( int (&array)[], int length ) {
 	int maxPermutation = length - 1;
 	int aux;
 	bool continueLoop;
+	
 	do {
 		continueLoop = false;
 		for ( int i = 0 ; i < maxPermutation ; i++ ) {
@@ -61,6 +54,16 @@ void bubbleSort( int (&array)[5], int length ) {
 			}
 		}
 	} while (continueLoop);
-
-
 }
+
+void printArray ( int array[], int length ) {
+	cout<<"[ ";
+	for (int i = 0 ; i < length ; i++) {
+		if (i == length - 1) {
+			cout<<array[i]<<" ]"<<endl;
+		} else {
+			cout<<array[i]<<", ";
+		}
+	}
+}
+
