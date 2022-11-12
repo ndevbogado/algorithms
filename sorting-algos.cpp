@@ -24,13 +24,19 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <time.h>
 
-void bubbleSort( int (&array)[], int length );
-void printArray (int array[], int length );
+void bubbleSort (int (&array)[], int length);
+void printArray (int array[], int length);
+void randomArray (int (&array)[], int length);
+
 using namespace std;
 
 int main () {
-	int array[5] = {5, 1, 10, 2, 0};
+	//int array[5] = {5, 1, 10, 2, 0};
+	int array[5];
+	randomArray(array, 5);
 	cout<<"Original Array: ";
 	printArray(array,5);
 	bubbleSort(array, 5);
@@ -67,3 +73,9 @@ void printArray ( int array[], int length ) {
 	}
 }
 
+void randomArray(int (&array)[], int length) {
+	srand(time(0));	
+	for (int i = 0 ; i < length; i++) {
+		array[i] = rand()%100;
+	}
+}
