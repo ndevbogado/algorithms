@@ -25,8 +25,42 @@
 #include <iostream>
 #include <fstream>
 
+void bubbleSort( int (&array)[5], int length );
+
 using namespace std;
 
 int main () {
 	cout<<"Hello There!";
+	int array[5] = {5, 1, 10, 2, 0};
+	cout<<"Original Array: [ 5, 1, 10, 2, 0 ]"<<endl;
+	bubbleSort(array, 5);
+	int length  = 5;
+	for (int i = 0 ; i < length ; i++) {
+		if(i == 0){
+			cout<<"Bubble-sorted Array: [ "<<array[i]<<", ";
+		} else if (i == length - 1) {
+			cout<<array[i]<<" ]"<<endl;
+		} else {
+			cout<<array[i]<<", ";
+		}
+	}
+}
+
+void bubbleSort( int (&array)[5], int length ) {
+	int maxPermutation = length - 1;
+	int aux;
+	bool continueLoop;
+	do {
+		continueLoop = false;
+		for ( int i = 0 ; i < maxPermutation ; i++ ) {
+			if (array[i] > array[i+1]) {
+				aux = array[i+1];
+				array[i+1] = array[i];
+				array[i] = aux;
+				continueLoop = true;
+			}
+		}
+	} while (continueLoop);
+
+
 }
