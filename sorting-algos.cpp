@@ -22,6 +22,7 @@ OTHER (COMPLEX) SORTING ALGORITHMS:
 #include <fstream>
 #include <cstdlib>
 #include <time.h>
+#include <chrono>
 
 void bubbleSort (int (&array)[], int length, int sortDirection);
 void selectionSort (int (&array)[], int size, int sortDirection);
@@ -29,6 +30,7 @@ void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
 
 using namespace std;
+using namespace std::chrono;
 
 int main () {
 	
@@ -40,14 +42,23 @@ int main () {
 	randomArray(array, 5);
 	cout<<"Original Array: ";
 	printArray(array,5);
-
+	
+	auto start = high_resolution_clock::now();
 	bubbleSort(array, 5, sortDirection);
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Bubble-Sorted Array: ";
 	printArray(array,5);
+	cout<<"in : "<< duration.count()<<" nanoSeg"<<endl;
 
+	
+	start = high_resolution_clock::now();
 	selectionSort(array, 5, sortDirection);
+	stop = high_resolution_clock::now();
+	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
+	cout<<"in : "<< duration.count()<<" nanoSeg"<<endl;
 }
 
 void bubbleSort( int (&array)[], int length, int sortDirection) {
