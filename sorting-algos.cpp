@@ -28,7 +28,7 @@
 #include <time.h>
 
 void bubbleSort (int (&array)[], int length, int sortDirection);
-void selectionSort (int (&array)[], int size);
+void selectionSort (int (&array)[], int size, int sortDirection);
 void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
 
@@ -49,7 +49,7 @@ int main () {
 	cout<<"Bubble-Sorted Array: ";
 	printArray(array,5);
 
-	selectionSort(array, 5);
+	selectionSort(array, 5, sortDirection);
 	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
 }
@@ -99,20 +99,39 @@ void randomArray(int (&array)[], int length) {
 	}
 }
 
-void selectionSort(int (&array)[], int size) {
+void selectionSort(int (&array)[], int size, int sortDirection) {
 	//read the array and seeks the lowest value. Then compares array[0] with the position of the lowest value and swaps them. Continue the process, starting from array[1] with the lowest value between array[1] and array[size-1] and reiterate the process.
-	int min;
+
+	int currentValue;
+	int*min = &currentValue;
+	int*max = &currentValue;
 	int aux;
 	int position;
 	for (int i = 0 ; i < size ; i++) {
-		min = array[i];
+		currentValue = array[i];
+
 		for (int j = i ; j < size ; j++) {
-			if (array[j] < min) {
-				min = array[j]; 
-				position = j;
+			switch (sortDirection) {
+				case 1: 
+					//*min points to currentValue, when user choosed sort direction '1' (min-to-max).
+					if (array[j] < *min) {
+						*min = array[j]; 
+						position = j;
+					}
+					break;
+				case 2: 
+					//*max points to currentValue, when user choosed sort direction '2' (max-to-min).
+					if (array[j] > *max) {
+						*max = array[j];
+						position = j;
+					}
+					break;
+				default:
+					break;
 			}
 		}
-		if (min != array[i]) {
+
+		if (currentValue != array[i]) {
 			aux = array[position];
 			array[position] = array[i];
 			array[i] = aux; 
