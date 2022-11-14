@@ -28,6 +28,7 @@
 #include <time.h>
 
 void bubbleSort (int (&array)[], int length, int sortDirection);
+void selectionSort (int (&array)[], int size);
 void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
 
@@ -43,8 +44,13 @@ int main () {
 	randomArray(array, 5);
 	cout<<"Original Array: ";
 	printArray(array,5);
+
 	bubbleSort(array, 5, sortDirection);
 	cout<<"Bubble-Sorted Array: ";
+	printArray(array,5);
+
+	selectionSort(array, 5);
+	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
 }
 
@@ -90,5 +96,26 @@ void randomArray(int (&array)[], int length) {
 	srand(time(0));	
 	for (int i = 0 ; i < length; i++) {
 		array[i] = rand()%100;
+	}
+}
+
+void selectionSort(int (&array)[], int size) {
+	//read the array and seeks the lowest value. Then compares array[0] with the position of the lowest value and swaps them. Continue the process, starting from array[1] with the lowest value between array[1] and array[size-1] and reiterate the process.
+	int min;
+	int aux;
+	int position;
+	for (int i = 0 ; i < size ; i++) {
+		min = array[i];
+		for (int j = i ; j < size ; j++) {
+			if (array[j] < min) {
+				min = array[j]; 
+				position = j;
+			}
+		}
+		if (min != array[i]) {
+			aux = array[position];
+			array[position] = array[i];
+			array[i] = aux; 
+		}
 	}
 }
