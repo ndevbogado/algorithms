@@ -44,6 +44,7 @@ int main () {
 	randomArray(array, 5);
 	cout<<"Original Array: ";
 	printArray(array,5);
+	cout<<endl;
 	
 	auto start = high_resolution_clock::now();
 	bubbleSort(array, 5, sortDirection);
