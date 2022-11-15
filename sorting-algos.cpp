@@ -63,7 +63,7 @@ int main () {
 	cout<<" in: "<< duration.count()<<" nanoSeg"<<endl;
 
 	start = high_resolution_clock::now();
-	quicksort(array, 5);
+	quickSort(array, 5);
 	stop = high_resolution_clock::now();
 	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Quick-Sort Array: ";
