@@ -26,6 +26,8 @@ OTHER (COMPLEX) SORTING ALGORITHMS:
 
 void bubbleSort (int (&array)[], int length, int sortDirection);
 void selectionSort (int (&array)[], int size, int sortDirection);
+void quicksort (int (&array)[], int size);
+
 void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
 
@@ -59,6 +61,10 @@ int main () {
 	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
 	cout<<"in : "<< duration.count()<<" nanoSeg"<<endl;
+
+	quickSort(array, 5);
+	cout<<"Quick-Sort Array: ";
+	printArray(array, 5);
 }
 
 void bubbleSort( int (&array)[], int length, int sortDirection) {
@@ -144,4 +150,12 @@ void selectionSort(int (&array)[], int size, int sortDirection) {
 			array[i] = aux; 
 		}
 	}
+}
+
+void quickSort (int (&array)[], int size) {
+	// The most efficient of the three sorting algorithms. It sorts the array into two partitions. The first partition holds the lowest values, and the second holds all the highest values (They are not necessary sorted). It repeats this operations for each partition.
+
+	int pivot = size / 2;
+	int lastIndex = size -1;
+
 }
