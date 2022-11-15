@@ -60,11 +60,15 @@ int main () {
 	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
-	cout<<"in : "<< duration.count()<<" nanoSeg"<<endl;
+	cout<<"in: "<< duration.count()<<" nanoSeg"<<endl;
 
+	start = high_resolution_clock::now();
 	quickSort(array, 5);
+	stop = high_resolution_clock::now();
+	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Quick-Sort Array: ";
 	printArray(array, 5);
+	cout<<"in : "<<duration.count()<<" nanoSeg"<<endl;
 }
 
 void bubbleSort( int (&array)[], int length, int sortDirection) {
