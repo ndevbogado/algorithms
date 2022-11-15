@@ -26,7 +26,7 @@ OTHER (COMPLEX) SORTING ALGORITHMS:
 
 void bubbleSort (int (&array)[], int length, int sortDirection);
 void selectionSort (int (&array)[], int size, int sortDirection);
-void quicksort (int (&array)[], int size);
+void quickSort (int (&array)[], int size);
 
 void printArray (int array[], int length);
 void randomArray (int (&array)[], int length);
@@ -51,7 +51,7 @@ int main () {
 	auto duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Bubble-Sorted Array: ";
 	printArray(array,5);
-	cout<<"in : "<< duration.count()<<" nanoSeg"<<endl;
+	cout<<" in: "<< duration.count()<<" nanoSeg"<<endl;
 
 	
 	start = high_resolution_clock::now();
@@ -60,15 +60,15 @@ int main () {
 	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Selection-Sort Array: ";
 	printArray(array,5);
-	cout<<"in: "<< duration.count()<<" nanoSeg"<<endl;
+	cout<<" in: "<< duration.count()<<" nanoSeg"<<endl;
 
 	start = high_resolution_clock::now();
-	quickSort(array, 5);
+	quicksort(array, 5);
 	stop = high_resolution_clock::now();
 	duration = duration_cast<nanoseconds>(stop-start);
 	cout<<"Quick-Sort Array: ";
 	printArray(array, 5);
-	cout<<"in : "<<duration.count()<<" nanoSeg"<<endl;
+	cout<<" in: "<<duration.count()<<" nanoSeg"<<endl;
 }
 
 void bubbleSort( int (&array)[], int length, int sortDirection) {
@@ -102,7 +102,7 @@ void printArray ( int array[], int length ) {
 	cout<<"[ ";
 	for (int i = 0 ; i < length ; i++) {
 		if (i == length - 1) {
-			cout<<array[i]<<" ]"<<endl;
+			cout<<array[i]<<" ]";
 		} else {
 			cout<<array[i]<<", ";
 		}
